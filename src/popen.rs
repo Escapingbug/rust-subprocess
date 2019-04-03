@@ -542,6 +542,14 @@ impl Popen {
                                  &mut self.stderr, input_data)
     }
 
+    pub fn shutdown_stdin(&mut self) -> IoResult<()> {
+        communicate::shutdown_stdin(&mut self.stdin)
+    }
+
+    pub fn shutdown_stdout(&mut self) -> IoResult<()> {
+        communicate::shutdown_stdout(&mut self.stdout)
+    }
+
     /// Feed and capture the piped data of the subprocess as strings.
     ///
     /// This is a convenience method equivalent to
